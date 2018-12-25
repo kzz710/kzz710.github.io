@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>慕课七夕主题</title>
+    <title>小白菜圣诞节快乐</title>
     
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/pageA.css"/>
@@ -52,6 +52,7 @@
             </li>
             <!-- 第三副画面 -->
             <li>
+                <div class="text"></div>
             	<!-- 背景图 -->
                 <div class="c_background">
                     <div class="c_background_top"></div>
@@ -84,7 +85,7 @@
         <!-- 飘花 -->
         <div id="snowflake"></div>
         <div id="boy" class="charector"></div>
-        <audio src="media/001.mp3"></audio>
+        <audio src="media/001.mp3" loop></audio>
         <div class="button">
         	<button>开始</button> 
     	</div>
@@ -95,6 +96,14 @@
     <script src="js/qixi.js" type="text/javascript" charset="utf-8"></script>
      <script type="text/javascript">
         $(function(){
+            var url = location.search
+            if (url.indexOf("?") !== -1) {    //判断是否有参数
+                var str = url.substr(1); //从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串
+                strs = str.split("=");   //用等号进行分隔 （因为知道只有一个参数 所以直接用等号进分隔 如果有多个参数 要用&号分隔 再用等号进行分隔）
+                $('.text').html(decodeURI(strs[1]) + ',圣诞节快乐')          //直接弹出第一个参数 （如果有多个参数 还要进行循环的）
+            } else {
+                $('.text').html('圣诞节快乐')
+            }
         	var boy=boyWalk();
         	var isPlay=false;
         	$('button').click(function(){
