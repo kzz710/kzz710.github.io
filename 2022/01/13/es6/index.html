@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+    <meta name="description" content="每天进步一点点">
+  
+
+  
+
+  
+    <meta name="author" content="kuangzz">
+  
+
+  
+
+  
+
+  <title>es6 | myBlog</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(https://s4.ax1x.com/2022/01/13/7Qj0kq.png)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          myBlog
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">es6</h1>
+          <h2 class="title-sub-wrap">
+            <strong>kuangzz</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2022-01-13T08:27:11.000Z" itemprop="datePublished">2022-01-13</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/js/">🏷️ js</a></li>
+  
+    <li><a href="/tags/es6/">🏷️ es6</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h2 id="es6基本知识"><a href="#es6基本知识" class="headerlink" title="es6基本知识"></a>es6基本知识</h2><h3 id="一、let-const"><a href="#一、let-const" class="headerlink" title="一、let/const"></a>一、let/const</h3><p>1、const/let都是用来声明变量，不可重复声明，具有块级作用域。存在暂时性死区，不存在变量提升。const用来声明常量。  </p>
+<h3 id="二、symbol"><a href="#二、symbol" class="headerlink" title="二、symbol"></a>二、symbol</h3><p>1、symbol是一个全新的数据类型，表示独一无二的值，对象可以以symbol类型作为键<br>2、现在主要用于声明对象的私有属性<br><strong>示例</strong></p>
+<pre><code class="javascript">console.log(Symbol() === Symbol()); // false
+console.log(Symbol(&#39;foo&#39;) === Symbol(&#39;foo&#39;)); // false
+console.log(typeof Symbol()); // symbol
+console.log(Symbol(&#39;foo&#39;)); // Symbol(&#39;foo&#39;)
+
+const obj = &#123;
+    [Symbol(&#39;name&#39;)]: &#39;张三&#39;
+&#125;
+console.log(obj) // &#123;[Symbol(name)]:&#39;张三&#39;&#125;
+console.log(obj[Symbol(&#39;name&#39;)]) // undefined
+
+let name = Symbol(&#39;name&#39;);
+const Person = &#123;
+    [name]: &#39;zhangsan&#39;,
+    age: 15,
+    say() &#123;
+        console.log(&#39;i am &#39; + this[name])
+    &#125;
+&#125;
+
+console.log(Person[Symbol(&#39;name&#39;)]) // undefined 故symbol一般用于定义私有属性 ，外部访问不到
+Person.say() // i am zhangsan
+
+console.log(Symbol.for(&#39;true&#39;) === Symbol.for(true)) // true  Symbol.for方法是根据字符串参数作比较是否相等
+
+const objj = &#123;
+    [Symbol(&#39;name&#39;)]: &#39;lisi&#39;,
+    age: 15
+&#125;
+
+for (let k in objj) &#123;
+    console.log(k); // age  for方法无法访问到Symbol属性
+&#125;
+
+console.log(Object.keys(objj)) // [&#39;age&#39;]  Object.keys也无法访问Symbol属性
+
+console.log(JSON.stringify(objj)) // &#123;&#39;age&#39;:15&#125;
+
+console.log(Object.getOwnPropertySymbols(objj)) // [Symbol(name)] 能获取到Symbol属性
+
+console.log(Reflect.ownKeys(objj)) // [&#39;age&#39;, Symbol(name)] 能获取到Symbol属性
+</code></pre>
+<h3 id="三、对象和数组的解构"><a href="#三、对象和数组的解构" class="headerlink" title="三、对象和数组的解构"></a>三、对象和数组的解构</h3><p><strong>示例</strong><br>1、数组的解构</p>
+<pre><code class="javascript">// 传统方法
+const arr = [1, 2, 3];
+let fir = arr[0];
+let sec = arr[1];
+let thr = arr[2];
+console.log(fir, sec, thr) // 1,2,3
+
+//es6新增解构方法
+let [f, s, t] = arr;
+console.log(f,s,t) // 1,2,3
+
+let [f, ...rest] = arr;
+console.log(f, rest) // 1, [2, 3]
+
+let [f, a, b, c, d] = arr;
+console.log(f,a,b,c,d) // 1,2,3,undefined，undefined
+
+let [,,a,b,c] = arr;
+console.log(a,b,c) // 3 undefined undefined
+</code></pre>
+<p>2、对象的解构</p>
+<pre><code class="javascript">const obj = &#123;
+    name: &#39;zhangsan&#39;,
+    age: 15
+&#125;
+
+const &#123;name, age&#125; = obj;
+console.log(name, age); // zhangsan 15
+
+const name1 = &#39;lisi&#39;;
+
+const &#123;name: name2, age, sex=&#39;man&#39;&#125; = obj;
+
+console.log(name1, name2, age, sex); // lisi zhangsan 15 man
+</code></pre>
+<h3 id="四、模板字符串"><a href="#四、模板字符串" class="headerlink" title="四、模板字符串"></a>四、模板字符串</h3><p><strong>示例</strong>  </p>
+<pre><code class="javascript">let str = `我是模板字符串 我能
+直接换行`
+console.log(str);
+//我是模板字符串 我能
+//直接换行
+
+const &#123;name, age, sex&#125; = &#123;
+    name: &#39;zhangsan&#39;,
+    age: 18,
+    sex: &#39;man&#39;
+&#125;
+
+let s = `大家好，我是$&#123;name&#125;, 今年$&#123;age&#125;, $&#123;1+20&#125;，$&#123;Math.random()&#125;`
+console.log(s) // 大家好，我是zhangsan, 今年18, 21，0.45371632552390184
+
+function tag(str, sex, name, age) &#123;
+    console.log(str, sex, name, age)
+&#125;
+//tag方法使用于模板字符串，第一个参数返回以$&#123;&#125;拆分的数组，剩余的参数与目标字符穿的顺序一一对应
+const a = tag`大家好，我是$&#123;sex&#125;，姓名：$&#123;name&#125;, 年龄$&#123;age&#125;, 哈哈`; // [ &#39;大家好， 我是&#39;, &#39;，姓名：&#39;, &#39;, 年龄&#39;, &#39;,哈哈&#39; ] &#39;man&#39; &#39;zhangsan&#39; 18
+console.log(a); // undefined
+</code></pre>
+<h3 id="五、扩展运算符-…"><a href="#五、扩展运算符-…" class="headerlink" title="五、扩展运算符(…)"></a>五、扩展运算符(…)</h3><p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中,属于浅拷贝<br><strong>示例</strong>  </p>
+<pre><code class="javascript">const a = &#123;
+    name: &#39;zhangsan&#39;,
+    age: 18,
+    friends: [&#39;xm&#39;, &#39;xh&#39;]
+&#125;
+const b = &#123;
+    name: &#39;lisi&#39;,
+    sex: &#39;woman&#39;
+&#125;
+
+const c = &#123;
+    ...a,
+    ...b
+&#125;
+console.log(c)  // &#123; name: &#39;lisi&#39;, age: 18, friends: [ &#39;xm&#39;, &#39;xh&#39; ], sex: &#39;woman&#39; &#125;
+
+// c引用数据类型发生改变，a也会随之改变，证明扩展运算符是浅拷贝
+c.friends[0] = &#39;xt&#39;;
+c.age = 20;
+console.log(a) // &#123; name: &#39;zhangsan&#39;, age: 18, friends: [ &#39;xt&#39;, &#39;xh&#39; ] &#125;
+console.log(c) // &#123; name: &#39;lisi&#39;, age: 20, friends: [ &#39;xt&#39;, &#39;xh&#39; ], sex: &#39;woman&#39; &#125;
+</code></pre>
+<h3 id="六、字符串新增方法"><a href="#六、字符串新增方法" class="headerlink" title="六、字符串新增方法"></a>六、字符串新增方法</h3><p>1、includes、startsWith、endsWith</p>
+<pre><code class="javascript">let s = &#39;hello es6&#39;;
+console.log(s.includes(&#39;es&#39;)); // true  判断字符串是否包含某字符串
+console.log(s.startsWith(&#39;e&#39;)); // false 判断字符串是否以某字符串开头
+console.log(s.endsWith(&#39;6&#39;)); // true  判断字符串是否以某字符串结尾
+</code></pre>
+<p>2、repeat方法</p>
+<pre><code class="javascript">let i = &#39;abc&#39;;
+console.log(i.repeat(3)) // abcabcabc 表示重复某字符串几次
+</code></pre>
+<p>3、padStart、padEnd方法</p>
+<pre><code class="javascript">let x = &#39;x&#39;;
+console.log(x.padStart(5, &#39;ab&#39;)); // ababx  在x字符串前面，用ab补全，总共5位  第一个参数补全之后的位数，第二个参数补全用的字符
+console.log(x.padStart(4, &#39;ab&#39;)); // abax   在x字符串前面，用ab补全，总共4位  第一个参数补全之后的位数，第二个参数补全用的字符
+console.log(x.padEnd(5, &#39;ab&#39;)); // xabab    在x字符串后面，用ab补全，总共5位  第一个参数补全之后的位数，第二个参数补全用的字符
+console.log(x.padEnd(4, &#39;ab&#39;)); // xaba     在x字符串后面，用ab补全，总共4位  第一个参数补全之后的位数，第二个参数补全用的字符
+</code></pre>
+<p>4、replaceAll方法</p>
+<pre><code class="javascript">let o = &#39;abbcc&#39;;
+let o1 = o.replaceAll(&#39;b&#39;, &#39;_&#39;);
+console.log(o) // &#39;abbcc&#39;
+console.log(o1) // &#39;a__cc&#39;
+</code></pre>
+<h3 id="七、箭头函数"><a href="#七、箭头函数" class="headerlink" title="七、箭头函数"></a>七、箭头函数</h3><p><strong>1、箭头函数中this是在定义是绑定的，而不是调用时。（箭头函数的this值继承自外围作用域。运行时它会首先到它的父级作用域找，如果父级作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向）</strong></p>
+<pre><code class="javascript">var a1 = &#39;ppp&#39;
+
+var obj1 = &#123;
+    a1: &#39;bbb&#39;,
+    b2: this.a1,
+    f: function () &#123;
+        console.log(this.a1)
+    &#125;,
+    d: () =&gt; &#123;
+        console.log(this.a1)
+    &#125;
+&#125;
+console.log(obj1.b2) // ‘ppp’
+obj1.f(); // ‘bbb’
+obj1.d(); // &#39;ppp&#39;
+</code></pre>
+<p><strong>2、箭头函数不能作为构造函数，不能使用new</strong>  </p>
+<pre><code class="javascript">//构造函数如下：
+function Person(p)&#123;
+    this.name = p.name;
+&#125;
+//如果用箭头函数作为构造函数，则如下
+var Person = (p) =&gt; &#123;
+    this.name = p.name;
+&#125;
+</code></pre>
+<p>由于this必须是实例对象，而箭头函数是没有实例的，此处的this指向window，不能产生person的实例，自相矛盾  </p>
+<p><strong>3、箭头函数没有arguments、caller、callee</strong><br>箭头函数本身没有arguments,如果箭头函数在一个function内部，它会将外部函数的arguments拿过来使用。<br>箭头函数中要想接手不定参数，应该使用rest参数…解决</p>
+<pre><code class="javascript">let B = (b)=&gt;&#123;
+  console.log(arguments);
+&#125;
+B(2,92,32,32);   // Uncaught ReferenceError: arguments is not defined
+
+let C = (...c) =&gt; &#123;
+  console.log(c);
+&#125;
+C(3,82,32,11323);  // [3, 82, 32, 11323]
+</code></pre>
+<p><strong>4、箭头函数通过call和apply调用，不会改变this指向，只会传入参数</strong>  </p>
+<pre><code class="javascript">var name = &#39;lw&#39;
+let a1 = &#123;
+    name: &#39;zs&#39;,
+    f: function (age) &#123;
+        console.log(`我是$&#123;this.name&#125;,年龄$&#123;age&#125;`)
+    &#125;,
+    d: (age) =&gt; &#123;
+        console.log(`我是$&#123;this.name&#125;,年龄$&#123;age&#125;`)
+    &#125;
+&#125;
+
+let a2 = &#123;
+    name: &#39;ls&#39;
+&#125;
+
+a1.f(15); // 我是zs,年龄15
+a1.d(15); // 我是lw,年龄15
+a1.f.call(a2, 18); // 我是ls,年龄18
+a1.d.call(a2, 18); // 我是lw,年龄18
+</code></pre>
+<p><strong>5、箭头函数没有原型属性</strong>  </p>
+<pre><code class="javascript">var A = function () &#123;
+    return 2
+&#125;
+
+var B = () =&gt; &#123;
+    return 3
+&#125;
+
+console.log(A.prototype) // &#123;constructor: ƒ&#125;
+console.log(B.prototype) // undefined
+</code></pre>
+<p><strong>6、箭头函数ES6 class中声明的方法为实例方法，不是原型方法</strong>  </p>
+<pre><code class="javascript">class Super &#123;
+    sayHello() &#123;
+        console.log(&#39;hello&#39;)
+    &#125;
+    sayWorld = () =&gt; &#123;
+        console.log(&#39;world&#39;)
+    &#125;
+&#125;
+const a = new Super();
+const b = new Super();
+
+console.log(a.sayHello === b.sayHello) // true sayHello是Super.prototype上的方法，所有实例共享同一个方法，所以为true
+console.log(a.sayWorld === b.sayWorld) // false sayWorld是各自实例上的方法，所以每个方法不一样，估为false
+console.log(Super.prototype)
+</code></pre>
+<h3 id="八、Proxy代理"><a href="#八、Proxy代理" class="headerlink" title="八、Proxy代理"></a>八、Proxy代理</h3><pre><code class="javascript">const person = &#123;
+    name: &#39;zs&#39;,
+    age: 18
+&#125;
+
+const personProxy = new Proxy(person, &#123;
+    get(target, key, receiver) &#123;
+        console.log(target, key, receiver)
+        return key in target ? target[key] : &#39;default&#39;;
+    &#125;,
+    set(target, key, value, receiver) &#123;
+        console.log(target, key, value, receiver)
+        if (typeof value !== &#39;number&#39;) &#123;
+            throw new TypeError(&#39;age need number&#39;);
+        &#125;
+        target[key] = value;
+    &#125;
+&#125;)
+
+console.log(personProxy.name) // &#123;name: &#39;zs&#39;, age: 18&#125;  &#39;name&#39;  Proxy&#123;name: &#39;zs&#39;, age: 18&#125;  zs
+console.log(personProxy.sex) // &#123;name: &#39;zs&#39;, age: 18&#125;  &#39;sex&#39;  Proxy&#123;name: &#39;zs&#39;, age: 18&#125;  default
+console.log(personProxy.age) // &#123;name: &#39;zs&#39;, age: 18&#125;  &#39;age&#39;  Proxy&#123;name: &#39;zs&#39;, age: 18&#125;  18
+personProxy.age = 19  // // &#123;name: &#39;zs&#39;, age: 18&#125;  &#39;age&#39;  19  Proxy&#123;name: &#39;zs&#39;, age: 18&#125;  
+personProxy.age = &#39;20&#39;;  // &#123;name: &#39;zs&#39;, age: 19&#125;  &#39;age&#39;  &#39;20&#39;  Proxy&#123;name: &#39;zs&#39;, age: 19&#125;  报错Uncaught TypeError: age need number
+
+
+const list = [1,2,3]
+const listProxy = new Proxy(list, &#123;
+    get(target, key, receiver) &#123;
+        console.log(&#39;get&#39;)
+        return target[key]
+    &#125;,
+    set(target, key, value, receiver) &#123;
+        console.log(&#39;set&#39;)
+        target[key] = value;
+        return true; // 表示设置成功
+    &#125;,
+    deleteProperty(target, key) &#123;
+        console.log(&#39;delete&#39;)
+    &#125;
+&#125;)
+console.log(listProxy[0]);
+console.log(listProxy.push(100));
+console.log(listProxy.shift())
+listProxy[0] = 999
+</code></pre>
+<p>Proxy代理 vs Object.defineProperty()<br>1、Object.defineProperty()只能监听对象的读写操作  而Proxy能监听更多的操作，比如deleteProperty、has等<br>2、Proxy能监听数组的操作<br>3、Proxy是以非侵入式的监管对象，不会对原对象进行任何的操作</p>
+<h3 id="八、Reflect"><a href="#八、Reflect" class="headerlink" title="八、Reflect"></a>八、Reflect</h3><p>Reflect提供了对象统一操作API</p>
+<pre><code class="javascript">const person = &#123;
+    name: &#39;zs&#39;,
+    age: 19
+&#125;
+function Person() &#123;
+    this.name = &#39;ls&#39;;
+    this.age = 20;
+&#125;
+Person.prototype.say = function () &#123;
+    console.log(&#39;hello world&#39;)
+&#125;
+const p = new Person();
+console.log(Reflect.get(person, &#39;name&#39;))  // zs
+console.log(Reflect.ownKeys(person)) // [&#39;name&#39;, &#39;age&#39;]  只能访问对象上的属性，不能访问原型上的
+console.log(Reflect.ownKeys(p)) // [&#39;name&#39;, &#39;age&#39;]
+console.log(Reflect.set(person, &#39;age&#39;, 20)) // true 表示操作成功
+console.log(Reflect.has(person, &#39;sex&#39;)) // false
+console.log(Reflect.deleteProperty(person, &#39;age&#39;)) // true 表示操作成功
+</code></pre>
+<h3 id="九、set和map"><a href="#九、set和map" class="headerlink" title="九、set和map"></a>九、set和map</h3><p>1、set数据结构 返回一个没有重复值的集合  </p>
+<pre><code class="javascript">const s = new Set()
+s.add(&#39;a&#39;).add(&#39;b&#39;).add(3).add(4).add(5).add(5);
+
+s.forEach(i =&gt; console.log(i))  // a b 3 4 5
+
+for (let i of s) &#123;
+    console.log(i) // a b 3 4 5
+&#125;
+
+console.log(s) // Set(5)&#123;&#39;a&#39;, &#39;b&#39;, 3, 4, 5&#125;
+console.log(s.size) // 5
+console.log(s.has(&#39;a&#39;)) // true
+console.log(s.has(100)) // false
+console.log(s.delete(5)) // true 表示操作成功 删除5
+console.log(s) // Set(4)&#123;&#39;a&#39;, &#39;b&#39;, 3, 4&#125;
+console.log(s.clear()) // undefined
+console.log(s) // Set(0)&#123;size: 0&#125;
+
+// 数组去重
+const array = [1,3,2,3,1,5,6,1,5];
+const newArr = [...new Set(array)]
+console.log(newArr) // [1, 3, 2, 5, 6]
+</code></pre>
+<p>2、map数据结构 键值对数据结构</p>
+<pre><code class="javascript">// 传统键值对象，会将key不是字符串的值转变为字符串
+const obj = &#123;&#125;;
+obj[123] = &#39;value&#39;;
+obj[true] = &#39;value&#39;;
+obj[&#123;name:&#39;zs&#39;&#125;] = &#39;value&#39;;
+obj[&#39;zzh&#39;] = &#39;value&#39;;
+console.log(Reflect.ownKeys(obj)) // [&#39;123&#39;, &#39;true&#39;, &#39;[object Object]&#39;, &#39;zzh&#39;]
+
+// map对象，会将key的数据类型保留
+const t = &#123;
+    name: &#39;kzz&#39;
+&#125;
+const m = new Map();
+m.set(t, &#39;a&#39;);
+m.set(true, &#39;b&#39;);
+m.set(123, &#39;c&#39;);
+console.log(m); // &#123;&#123;…&#125; =&gt; &#39;a&#39;, true =&gt; &#39;b&#39;, 123 =&gt; &#39;c&#39;&#125;
+console.log(m.get(t)) // a
+console.log(m.get(true)) // b
+m.forEach((i, k) =&gt; console.log(i, k)) // a &#123;name: &#39;kzz&#39;&#125;  b true  c 123
+</code></pre>
+<h3 id="十、class"><a href="#十、class" class="headerlink" title="十、class"></a>十、class</h3><p>1、ES6的类，完全可以看成构造函数的另外一种写法  </p>
+<pre><code class="javascript">class Point &#123;
+  // ...
+&#125;
+
+typeof Point // &quot;function&quot;
+Point === Point.prototype.constructor  // true
+</code></pre>
+<p>2、类的方法都是定义在prototype对象上（箭头函数方法是定义在实例上）<br>3、类的内部定义的方法，都是不可枚举的,这和ES5的行为不一致</p>
+<pre><code class="javascript">class Point &#123;
+  constructor(x, y) &#123;
+    // ...
+  &#125;
+
+  toString() &#123;
+    // ...
+  &#125;
+&#125;
+
+Object.keys(Point.prototype)
+// []
+Object.getOwnPropertyNames(Point.prototype)
+// [&quot;constructor&quot;,&quot;toString&quot;]
+</code></pre>
+<p>4、constructor方法是类的默认方法，通过new对象创建实例时，会自动调用该方法。一个类必定有constructor方法，如果没有显式定义，一个空的constructor方法会默认被添加  </p>
+<pre><code class="javascript">class Point &#123;
+&#125;
+
+// 等同于
+class Point &#123;
+  constructor() &#123;&#125;
+&#125;
+</code></pre>
+<p>5、constructor方法默认返回实例对象（this）,完全可以指定返回另外一个对象</p>
+<pre><code class="javascript">class Foo &#123;
+  constructor() &#123;
+    return Object.create(null);
+  &#125;
+&#125;
+
+new Foo() instanceof Foo
+// false
+// constructor返回一个全新的对象，结果导致实例对象不是Foo的实例
+</code></pre>
+<p>6、静态方法<br>类相当于实例的原型，所有在类中定义的方法，都会被实例继承，如果在一个方法前加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为静态方法</p>
+<pre><code class="javascript">class Foo &#123;
+  static classMethod() &#123;
+    return &#39;hello&#39;;
+  &#125;
+&#125;
+
+Foo.classMethod() // &#39;hello&#39;
+
+var foo = new Foo();
+foo.classMethod()
+// TypeError: foo.classMethod is not a function
+</code></pre>
+<p>如果静态方法中包含关键字this,这个this指向的是类而不是实例</p>
+<pre><code class="javascript">class Foo &#123;
+  static bar() &#123;
+    this.baz();
+  &#125;
+  static baz() &#123;
+    console.log(&#39;hello&#39;);
+  &#125;
+  baz() &#123;
+    console.log(&#39;world&#39;);
+  &#125;
+&#125;
+
+Foo.bar() // hello
+</code></pre>
+<p>父类的静态方法能被子类继承</p>
+<pre><code class="javascript">class Foo &#123;
+  static classMethod() &#123;
+    return &#39;hello&#39;;
+  &#125;
+&#125;
+
+class Bar extends Foo &#123;
+&#125;
+
+Bar.classMethod() // &#39;hello&#39;
+</code></pre>
+<p>7、静态属性<br>使用static 声明的属性就是静态属性，由类调用</p>
+<h3 id="十一、类的继承"><a href="#十一、类的继承" class="headerlink" title="十一、类的继承"></a>十一、类的继承</h3><p>1、class可以通过extends关键字实现继承</p>
+<pre><code class="javascript">class Point &#123;
+&#125;
+
+class ColorPoint extends Point &#123;
+  constructor(x, y, color) &#123;
+    super(x, y); // 调用父类的constructor(x, y)
+    this.color = color;
+  &#125;
+
+  toString() &#123;
+    return this.color + &#39; &#39; + super.toString(); // 调用父类的toString()
+  &#125;
+&#125;
+</code></pre>
+<p>上述代码中，constructor和toString方法之后，都出现了super关键字，它在这里表示父类的构造函数，用来新建父类的实例<br>子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。如果不调用super方法，子类就得不到this对象。  </p>
+<pre><code class="javascript">class Point &#123; /* ... */ &#125;
+
+class ColorPoint extends Point &#123;
+  constructor() &#123;
+  &#125;
+&#125;
+
+let cp = new ColorPoint(); //ReferenceError
+</code></pre>
+<p>ES6的继承机制实质上是将父类的实例对象的属性和方法，加在this上面，所以必须先调用super方法，然后再用子类的构造函数修改this<br>如果子类没有定义constructor方法，这个方法会被默认添加</p>
+<pre><code class="javascript">class ColorPoint extends Point &#123;
+&#125;
+
+// 等同于
+class ColorPoint extends Point &#123;
+  constructor(...args) &#123;
+    super(...args);
+  &#125;
+&#125;
+</code></pre>
+<p>在子类的constructor方法没有调用super之前，就使用this关键字，结果报错</p>
+<pre><code class="javascript">class Point &#123;
+  constructor(x, y) &#123;
+    this.x = x;
+    this.y = y;
+  &#125;
+&#125;
+
+class ColorPoint extends Point &#123;
+  constructor(x, y, color) &#123;
+    this.color = color; // ReferenceError
+    super(x, y);
+    this.color = color; // 正确
+  &#125;
+&#125;
+</code></pre>
+<p>2、super关键字<br>super关键字既可以当做函数使用，也可以当做对象使用  </p>
+<p>第一种情况，super作为构造函数使用，代表父类的构造函数，ES6要求，子类的构造函数必须执行一次super函数</p>
+<pre><code class="javascript">class A &#123;&#125;
+
+class B extends A &#123;
+  constructor() &#123;
+    super();
+  &#125;
+&#125;
+</code></pre>
+<p>注意，super虽然代表了父类的构造函数，但是返回是子类B的实例，即super内部的this指向的是B的实例，因此super()相当于A.prototype.constructor.call(this)。  </p>
+<p>第二种情况，super作为对象，在普通方法中指向父类的原型对象，在静态方法中，指向父类  </p>
+<pre><code class="javascript">class A &#123;
+  p() &#123;
+    return 2;
+  &#125;
+&#125;
+
+class B extends A &#123;
+  constructor() &#123;
+    super();
+    console.log(super.p()); // 2
+  &#125;
+&#125;
+
+let b = new B();
+</code></pre>
+<p>上面代码中，子类B当中的super.p()，就是将super当做一个对象。这是super在普通方法中，指向A.prototype，所以super.p()相当于A.prototype.p()。  </p>
+<p>注意：这里的super指向的是父类的原型对象，所以定义在父类实例上的方法和属性，是无法通过super调用的</p>
+<pre><code class="javascript">class A &#123;
+  constructor() &#123;
+    this.p = 2;
+  &#125;
+&#125;
+
+class B extends A &#123;
+  get m() &#123;
+    return super.p;
+  &#125;
+&#125;
+
+let b = new B();
+b.m // undefined
+</code></pre>
+<p>ES6规定，在子类的普通方法中通过super调用父类的方法时，方法内部this指向当前子类的实例  </p>
+<pre><code class="javascript">class A &#123;
+  constructor() &#123;
+    this.x = 1;
+  &#125;
+  print() &#123;
+    console.log(this.x);
+  &#125;
+&#125;
+
+class B extends A &#123;
+  constructor() &#123;
+    super();
+    this.x = 2;
+  &#125;
+  m() &#123;
+    super.print();
+  &#125;
+&#125;
+
+let b = new B();
+b.m() // 2
+</code></pre>
+<p>上面代码中，super.print()虽然调用的是A.prototype.print()，但是A.prototype.print()内部的this指向子类B的实例，导致输出的是2，而不是1。也就是说，实际上执行的是super.print.call(this)。  </p>
+<p>由于this指向子类实例，所以如果通过super对某个属性赋值，这时super就是this，赋值的属性会变成子类实例的属性。  </p>
+<pre><code class="javascript">class A &#123;
+  constructor() &#123;
+    this.x = 1;
+  &#125;
+&#125;
+
+class B extends A &#123;
+  constructor() &#123;
+    super();
+    this.x = 2;
+    super.x = 3;
+    console.log(super.x); // undefined
+    console.log(this.x); // 3
+  &#125;
+&#125;
+
+let b = new B();
+</code></pre>
+<p>上面代码中，super.x赋值为3，这时等同于对this.x赋值为3。而当读取super.x的时候，读的是A.prototype.x，所以返回undefined。</p>
+<p>如果super作为对象，用在静态方法之中，这时super将指向父类，而不是父类的原型对象。</p>
+<pre><code class="javascript">class Parent &#123;
+  static myMethod(msg) &#123;
+    console.log(&#39;static&#39;, msg);
+  &#125;
+
+  myMethod(msg) &#123;
+    console.log(&#39;instance&#39;, msg);
+  &#125;
+&#125;
+
+class Child extends Parent &#123;
+  static myMethod(msg) &#123;
+    super.myMethod(msg);
+  &#125;
+
+  myMethod(msg) &#123;
+    super.myMethod(msg);
+  &#125;
+&#125;
+
+Child.myMethod(1); // static 1
+
+var child = new Child();
+child.myMethod(2); // instance 2
+</code></pre>
+<p>在子类的静态方法中通过super调用父类的方法时，方法内部的this指向当前的子类，而不是子类的实例。  </p>
+<pre><code class="javascript">class A &#123;
+  constructor() &#123;
+    this.x = 1;
+  &#125;
+  static print() &#123;
+    console.log(this.x);
+  &#125;
+&#125;
+
+class B extends A &#123;
+  constructor() &#123;
+    super();
+    this.x = 2;
+  &#125;
+  static m() &#123;
+    super.print();
+  &#125;
+&#125;
+
+B.x = 3;
+B.m() // 3
+</code></pre>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s4.ax1x.com/2022/01/26/7LPKsg.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/01/26/network/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">network</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s4.ax1x.com/2022/01/13/7QjJ1S.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/01/11/basicJs/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">basicJs</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://img.cmvideo.cn/publish/voms2/uic_service/picture/userImage/740/885/933/20210616153149jzkc.png" class="soft-size--round soft-style--box" alt="kuangzz">
+    
+    
+      <h2>kuangzz</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>11</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        1
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        14
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%B0%8F%E6%8A%80%E6%9C%AF/">
+            小技术 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/JS/" style="font-size: 10px;" class="tags-cloud-0">JS</a> <a href="/tags/commonJs/" style="font-size: 10px;" class="tags-cloud-0">commonJs</a> <a href="/tags/es6/" style="font-size: 10px;" class="tags-cloud-0">es6</a> <a href="/tags/html/" style="font-size: 10px;" class="tags-cloud-0">html</a> <a href="/tags/js/" style="font-size: 20px;" class="tags-cloud-10">js</a> <a href="/tags/promise/" style="font-size: 10px;" class="tags-cloud-0">promise</a> <a href="/tags/ts/" style="font-size: 10px;" class="tags-cloud-0">ts</a> <a href="/tags/vue/" style="font-size: 15px;" class="tags-cloud-5">vue</a> <a href="/tags/webpack/" style="font-size: 10px;" class="tags-cloud-0">webpack</a> <a href="/tags/%E5%8D%95%E9%A1%B5%E9%9D%A2/" style="font-size: 10px;" class="tags-cloud-0">单页面</a> <a href="/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" style="font-size: 10px;" class="tags-cloud-0">双向绑定</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">网络</a> <a href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;" class="tags-cloud-0">观察者模式</a> <a href="/tags/%E8%B7%AF%E7%94%B1/" style="font-size: 10px;" class="tags-cloud-0">路由</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2022 <a href="/" target="_blank">kuangzz</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>

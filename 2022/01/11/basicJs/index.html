@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+    <meta name="description" content="每天进步一点点">
+  
+
+  
+
+  
+    <meta name="author" content="kuangzz">
+  
+
+  
+
+  
+
+  <title>basicJs | myBlog</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(https://s4.ax1x.com/2022/01/13/7QjJ1S.png)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          myBlog
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">basicJs</h1>
+          <h2 class="title-sub-wrap">
+            <strong>kuangzz</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2022-01-11T02:43:11.000Z" itemprop="datePublished">2022-01-11</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/js/">🏷️ js</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h2 id="js基础知识"><a href="#js基础知识" class="headerlink" title="js基础知识"></a>js基础知识</h2><h3 id="一、js数据类型"><a href="#一、js数据类型" class="headerlink" title="一、js数据类型"></a>一、js数据类型</h3><p>基本数值类型：String、Number、Boolean、Null、Undefined、Symbol<br>引用数据类型：Object、Array、Function  </p>
+<p>null和undefined的区别：null表示空对象，undefined表示已在作用域中声明但未赋值的变量  </p>
+<p>typeof主要用来判断数据类型 返回值有string、boolean、number、function、object、undefined  </p>
+<p>instanceof 判断该对象是谁的实例</p>
+<p>弱类型：在定义变量时，我们可以为变量赋值任何数据，变量的数据类型不是固定死的，这样的类型叫做弱类型<br>强类型：在声明变量的时候，一旦给变量赋值，那么变量的数据类型就已经确定，之后如果要给该变量赋值其他类型的数据，需要进行强制类型装换  </p>
+<p>强类型不允许任意类型的隐式类型转换，而弱类型是允许的</p>
+<p>动态类型：动态类型的类型检查会在 <strong>代码运行的时候进行</strong><br>静态类型：静态类型的类型检查会在 <strong>编译时进行</strong></p>
+<h3 id="二、作用域和作用域链"><a href="#二、作用域和作用域链" class="headerlink" title="二、作用域和作用域链"></a>二、作用域和作用域链</h3><p>在js中，作用域分为全局作用域和局部作用域，全局作用域在程序的任何地方都能访问，局部作用域一般指函数内部的作用域。<br>作用域链：函数内部找不到值，就会往上级作用域去找，一直找到全局作用域，这样一个查找过程形成的链条称为作用域链。</p>
+<h3 id="三、变量提升"><a href="#三、变量提升" class="headerlink" title="三、变量提升"></a>三、变量提升</h3><p>在js编译阶段，会把变量和函数的声明提升至当前作用域的顶端<br>注意点：<br>1、提升的部分只是变量的声明，赋值语句和可执行代码逻辑还是保持原地不动<br>2、提升只是将变量声明和函数声明提升到变量所在的作用域顶端，并不会提示到全局作用域<br>3、ES6 的let和const声明不存在变量提升<br>4、函数是一级公民，优先提升</p>
+<h3 id="四、闭包"><a href="#四、闭包" class="headerlink" title="四、闭包"></a>四、闭包</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
+<pre><code class="javascript">function a() &#123;
+    var num = 0;
+    function b() &#123;
+        num++;
+        console.log(num);
+    &#125;
+    return b;
+&#125;
+
+var a1 = a();
+a1();
+a1();
+
+// 打印结果为1,2
+</code></pre>
+<p>正常来说，a方法执行完毕后，a方法的作用域会被垃圾回收机制销毁，但由于此时全局作用域中a1指向了b方法，全局作用域变量不会被回收，故垃圾回收机制认为b还在使用，不会销毁，同时b方法引用了<br>a方法作用域中的num变量，故num也不会销毁，此时就形成了闭包，每次请求，都在原有的num上++,故打印为1,2  </p>
+<p>闭包的优点：<br>1、可以读取函数内部的变量<br>2、避免全局污染  </p>
+<p>闭包的缺点：<br>1、闭包会导致变量不会被垃圾回收机制所清除，会大量消耗内存<br>2、不恰当的使用闭包可能会造成内存泄漏的问题  </p>
+<h3 id="五、原型和原型链"><a href="#五、原型和原型链" class="headerlink" title="五、原型和原型链"></a>五、原型和原型链</h3><p>函数的原型：创建（声明）一个函数A，那么浏览器会在内存中创建一个对象B,函数A会有一个默认的属性prototype指向对象B，这个对象B就是函数A的原型对象。这个原型对象B有个默认属性constructor指向函数A<br><img src="http://lizhenchao.oss-cn-shenzhen.aliyuncs.com/imgs/public/16-11-10/43031030.jpg"></p>
+<p>将函数A作为构造函数使用new创建对象C，对象C就会存在一个属性__proto__([[Prototype]])指向原型对象B<br><img src="http://lizhenchao.oss-cn-shenzhen.aliyuncs.com/imgs/public/16-11-10/6663492.jpg"></p>
+<p><strong>Person函数举例</strong>  </p>
+<pre><code class="javascript">function Person()
+&#123;
+
+&#125;
+
+var person = new Person();
+person.name = &#39;Tian&#39;;
+console.log(person.name);    //Tian
+</code></pre>
+<p>Person有个属性prototype指向原型对象(这里称为对象A，Person.prototype)，原型对象有个属性constructor指向Person,实例person有个属性__proto__指向原型对象<br><img src="https://s4.ax1x.com/2022/01/11/7mAFOg.png"><br>原型对象也是对象，构造函数为Object,构造函数Object的prototype指向原型对象B(Object.prototype)，原型对象B的constructor属性指向构造函数Object,原型对象A的__proto__指向原型对象B(Object.prototype)<br><img src="https://s4.ax1x.com/2022/01/11/7mEP41.png"></p>
+<p>原型链：实例的属性会先从实例的构造函数找，当前实例没有就会往构造函数的原型上找，直到找到构造函数Object的原型对象为止，Object.prototype.__proto__指向null,这样一个找寻过程形成的链路叫做原型链<br><img src="https://s4.ax1x.com/2022/01/11/7mEjPI.png"></p>
+<h3 id="六、this指向"><a href="#六、this指向" class="headerlink" title="六、this指向"></a>六、this指向</h3><p>this永远指向最后调用它的对象<br>例1</p>
+<pre><code class="javascript">var name = &#39;小王&#39;, age = 17;
+var obj = &#123;
+    name: &#39;小张&#39;,
+    objAge: this.age,
+    myFun: function () &#123;
+        console.log(this.name + &quot;年龄&quot; + this.age);
+    &#125;
+&#125;
+console.log(obj.objAge) // 17
+obj.myFun() // 小张年龄undefined
+let f = obj.myFun;
+f();  // 小王年龄17
+</code></pre>
+<p>例2</p>
+<pre><code class="javascript">var fav = &#39;盲僧&#39;;
+function shows() &#123;
+    console.log(this.fav);
+&#125;
+shows()// 盲僧
+</code></pre>
+<p>this永远指向最后调用它的方法的对象，示例1  obj.myFun()this指向obj,将obj.myFun赋值给f,f调用，此时f()等同于window.fn(),故this指向window对象，示例2同理  </p>
+<p>函数对象的call()、apply()、bind()能改变this指向  </p>
+<p><strong>call、apply、bind方法详解</strong><br>例1  </p>
+<pre><code class="javascript">var name = &#39;小王&#39;, age = 17;
+    var obj = &#123;
+        name: &#39;小张&#39;,
+        objAge: this.age,
+        myFun: function () &#123;
+            console.log(this.name + &quot;年龄&quot; + this.age);
+        &#125;
+    &#125;
+    var db = &#123;
+        name: &#39;德玛&#39;,
+        age: 99
+    &#125;
+
+    obj.myFun.call(db) // 德玛年龄99
+    obj.myFun.apply(db) // 德玛年龄99
+    obj.myFun.bind(db)() // 德玛年龄99
+</code></pre>
+<p>call、apply、bind都能改变this指向，bind方法返回是一个方法，需要再次调用  </p>
+<p>例2</p>
+<pre><code class="javascript">var name = &#39;小王&#39;, age = 17;
+    var obj = &#123;
+        name: &#39;小张&#39;,
+        objAge: this.age,
+        myFun: function (fm, to) &#123;
+            console.log(this.name + &quot;年龄&quot; + this.age, &quot;来自&quot; + fm + &quot;去往&quot; + to);
+        &#125;
+    &#125;
+    var db = &#123;
+        name: &#39;德玛&#39;,
+        age: 99
+    &#125;
+
+    obj.myFun.call(db, &#39;上海&#39;, &#39;成都&#39;) // 德玛年龄99 来自上海去往成都
+    obj.myFun.apply(db, [&#39;上海&#39;, &#39;成都&#39;]) // 德玛年龄99 来自上海去往成都
+    obj.myFun.bind(db, &#39;上海&#39;, &#39;成都&#39;)() // 德玛年龄99 来自上海去往成都
+    obj.myFun.bind(db, [&#39;上海&#39;, &#39;成都&#39;])() // 德玛年龄99 来自上海,成都去往undefined
+</code></pre>
+<p>call、apply、bind第一个参数都是this指向的对象，第二个参数，call是直接放入，apply是放入数组，bind和call参数形式一样，除了需要再次调用  </p>
+<h3 id="七、new关键字"><a href="#七、new关键字" class="headerlink" title="七、new关键字"></a>七、new关键字</h3><p>是用new一个构造函数创建对象实例的过程  </p>
+<pre><code class="javascript">function Pro()&#123;
+    this.x = &#39;1&#39;;
+    this.y = function()&#123;&#125;;
+&#125;
+var p = new Pro();
+</code></pre>
+<p>1、创建一个空对象<br>2、将空对象的__proto__指向构造函数的原型对象（Pro.prototype）<br>3、将构造函数中的this指向此对象(new关键字会自动调用函数的apply方法，将this指向这个空对象吗)<br>4、执行构造函数代码为对象赋值<br>5、返回本对象(判断构造函数的返回值，如果是值类型，则返回创建的对象，如果是引用类型则返回引用类型对象本身)<br><img src="https://pic2.zhimg.com/v2-7ce5f71bd0865872b513a88fabb597fd_r.jpg"></p>
+<p><strong>补充知识点</strong><br>1、在严格模式中默认的this不再是window，而是undefined</p>
+<h3 id="八、继承"><a href="#八、继承" class="headerlink" title="八、继承"></a>八、继承</h3><p>父类准备</p>
+<pre><code class="javascript">// 定义一个动物类
+function Animal(name) &#123;
+  // 属性
+  this.name = name || &#39;Animal&#39;;
+  // 实例方法
+  this.sleep = function () &#123;
+    console.log(this.name + &#39;正在睡觉&#39;);
+  &#125;
+&#125;
+// 原型方法
+Animal.prototype.eat = function (food) &#123;
+  console.log(this.name + &quot;正在吃&quot; + food);
+&#125;
+</code></pre>
+<p><strong>1、原型链继承</strong><br>核心：将父类的实例作为子类的原型</p>
+<pre><code class="javascript">function Cat(name) &#123;
+      this.name = name;
+&#125;
+
+Cat.prototype = new Animal();
+Cat.prototype.age = 1;
+
+var cat = new Cat(&#39;ximi&#39;);
+console.log(cat.name, cat.age); // ximi 1
+cat.eat(&#39;fish&#39;); // ximi正在吃fish
+cat.sleep(); // ximi正在睡觉
+console.log(cat instanceof Cat); // true
+console.log(cat instanceof Animal); // true
+</code></pre>
+<p>特点：<br>1、非常纯粹的继承关系，实例是子类的实例，也是父类的实例<br>2、父类新增原型方法/原型属性，子类都能访问到<br>3、简单，易于实现<br>缺点：<br>1、要新增子类原型属性和方法，必须放在new Animal()这样的语句之后执行<br>2、无法实现多继承<br>3、来自原型对象的所有属性被所有实例共享<br>4、创建子类实例时，无法向父类构造函数传参  </p>
+<p><strong>2、构造继承</strong><br>核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）  </p>
+<pre><code class="javascript">function Cat(name) &#123;
+    Animal.call(this, &#39;ximi&#39;);
+    this.name = name || &#39;putao&#39;;
+&#125;
+
+var cat = new Cat()
+console.log(cat.name) // putao
+cat.eat(&#39;fish&#39;); // 报错
+cat.sleep(); // ximi正在睡觉
+console.log(cat instanceof Cat) // true
+console.log(cat instanceof Animal) // false
+</code></pre>
+<p>特点：<br>1、只继承了父类构造函数的属性和方法，没有继承父类原型的属性和方法<br>2、可以继承多个构造函数属性和方法（call多个）<br>3、创建子类实例时可以向父类传参<br>缺点：<br>1、实例并不是父类的实例，只是子类的实例<br>2、只能继承父类的属性和方法，不能继承父类原型的属性和方法<br>3、无法实现函数复用，每个子类都有父类实例函数的副本，影响性能  </p>
+<p><strong>3、实例继承</strong><br>核心：为父类实例添加新特性，作为子类实例返回  </p>
+<pre><code class="javascript">function Cat(name) &#123;
+    var instance = new Animal(&#39;ximi&#39;);
+    instance.name = name || &#39;putaa&#39;;
+    return instance
+&#125;
+
+var cat = new Cat(&#39;ppt&#39;);
+console.log(cat.name); // ppt
+cat.eat(&#39;鱼&#39;); //ppt正在吃鱼
+cat.sleep(); //ppt正在睡觉
+console.log(cat instanceof Cat); //false
+console.log(cat instanceof Animal); // true
+</code></pre>
+<p>特点：<br>1、不限制调用方式，不管是new 子类()还是子类()，返回的对象具有相同的效果<br>缺点：<br>1、实例是父类的实例，不是子类的实例<br>2、不支持多继承  </p>
+<p><strong>4、拷贝继承</strong>  </p>
+<pre><code class="javascript">function Cat(name) &#123;
+    var instance = new Animal(name);
+
+    for (let key in instance) &#123;
+        this[key] = instance[key];
+    &#125;
+&#125;
+
+var cat = new Cat(&#39;bbt&#39;);
+console.log(cat.name); //bbt
+cat.eat(&#39;肉&#39;); // bbt正在吃肉
+cat.sleep(); // bbt正在睡觉
+console.log(cat instanceof Cat); // true
+console.log(cat instanceof Animal); // false
+</code></pre>
+<p>特点：<br>1、支持多继承<br>缺点：<br>1、效率低，内存占用高，因为要拷贝父类的属性<br>2、无法获取父类不可枚举的方法  </p>
+<p><strong>5、组合继承</strong><br>核心：通过调用父类构造函数，继承父类属性并保留传参的特点，然后将通过将父类的实例作为子类的原型，实现函数复用</p>
+<pre><code class="javascript">function Cat(name) &#123;
+    Animal.call(this, name);
+&#125;
+Cat.prototype = new Animal();
+var cat = new Cat(&#39;ttp&#39;);
+console.log(cat.name); // ttp
+cat.eat(&#39;白菜&#39;); // ttp正在吃白菜
+cat.sleep(); // ttp正在睡觉
+console.log(cat instanceof Cat); // true
+console.log(cat instanceof Animal); // true
+</code></pre>
+<p>特点：<br>1、弥补了方式2的缺陷，可以继承实例的属性和方法，也能继承原型的属性和方法<br>2、既是子类的实例，也是父类的实例<br>3、不存在引用属性共享的问题<br>4、可传参<br>5、函数可复用<br>缺点：<br>1、调用两次父类的构造函数，生成两份实例（子类实例将子类原型上的那份屏蔽了）  </p>
+<p><strong>6、寄生组合继承</strong><br>核心：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次方法和属性，避免组合继承的缺陷  </p>
+<pre><code class="javascript">function Cat(name) &#123;
+    Animal.call(this,name);
+&#125;
+
+var Super = function () &#123;&#125;
+
+Super.prototype = Animal.prototype
+
+Cat.prototype = new Super();
+
+Cat.prototype.constructor = Cat;
+
+var cat = new Cat(&#39;pig&#39;);
+
+console.log(cat.name); // pig
+cat.eat(&#39;白菜&#39;); // pig正在吃白菜
+cat.sleep(); // pig正在睡觉
+console.log(cat instanceof Cat); // true
+console.log(cat instanceof Animal); // true
+</code></pre>
+<p>特点：<br>1、解决了两次调用父类的构造函数<br>缺点：<br>1、实现较为复杂</p>
+<h3 id="九、EventLoop-事件循环"><a href="#九、EventLoop-事件循环" class="headerlink" title="九、EventLoop (事件循环)"></a>九、EventLoop (事件循环)</h3><p>JS是单线程的，为了防止一个函数的执行事件过长阻塞后面的代码，所以会先把同步代码压入执行栈中，依次执行，将异步代码推入异步队列，当执行栈中没有执行任务时，EventLoop开始工作，将异步队列中的任务依次压入执行栈中执行，直到所有异步队列执行完毕。<br><img src="https://s4.ax1x.com/2022/01/13/7QcOG6.png"><br><img src="https://s4.ax1x.com/2022/01/13/7Qgliq.png"><br>注意：<br>1、js是单线程的，但是浏览器是多线程的，执行异步任务是异步线程执行<br>2、异步任务也分为宏任务和微任务，微任务优先宏任务执行，微任务队列的代表：Promise.then,MutationObserver。宏任务的代表：setTimeout,setInterval,setImmediate  </p>
+<h3 id="十、事件冒泡、捕获、委托"><a href="#十、事件冒泡、捕获、委托" class="headerlink" title="十、事件冒泡、捕获、委托"></a>十、事件冒泡、捕获、委托</h3><p>DOM事件流：事件捕获、处于目标阶段、事件冒泡<br>事件委托：就是利用事件冒泡机制，将事件绑定在目标DOM的父级上，触发执行效果<br>事件委托的优势：1、减少DOM操作，提高性能。2、随时可以添加子元素，添加的子元素会自动有相应的处理事件  </p>
+<h3 id="十一、原生AJAX"><a href="#十一、原生AJAX" class="headerlink" title="十一、原生AJAX"></a>十一、原生AJAX</h3><pre><code class="javascript">var Ajax = &#123;
+    get: function (url, callback) &#123;
+        // XMLHttpRequest对象用于在后台与服务器交换数据
+        var xhr = new XMLHttpRequest();
+        //参数说明：方法名GET/POST   请求地址   async 请求进行异步还是同步，true服务器响应时执行其他脚本，false是等待服务器响应再执行
+        xhr.open(&#39;GET&#39;, url, false);
+        xhr.onreadystatechange = function () &#123;
+            // readyState == 4说明请求已完成
+            if (xhr.readyState == 4 &amp;&amp; xhr.status == 200 || xhr.status == 304) &#123;
+                // 从服务器获得数据
+                callback(xhr.responseText)
+            &#125;
+        &#125;
+        xhr.send();
+    &#125;,
+    post: function (url, data, callback) &#123;
+        var xhr = new XMLHttpRequest();
+        xhr.open(&#39;POST&#39;,url, false);
+        xhr.setRequestHeader(&#39;Content-Type&#39;,&#39;application/x-www-form-urlencoded&#39;);
+        xhr.onreadystatechange = function () &#123;
+            if (xhr.readyState == 4) &#123;
+                if (xhr.status == 200 || xhr.status == 304) &#123;
+                    callback(xhr.responseText);
+                &#125;
+            &#125;
+        &#125;
+        xhr.send(data);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="十二、js深拷贝和浅拷贝"><a href="#十二、js深拷贝和浅拷贝" class="headerlink" title="十二、js深拷贝和浅拷贝"></a>十二、js深拷贝和浅拷贝</h3><p>如何区分浅拷贝和深拷贝，简单来说，假设B复制A，当修改A的引用数据时，看B是否发生改变，如果B跟着变了，就是浅拷贝，如果没变就是深拷贝<br>浅拷贝的方式：<br>1、直接=赋值<br>2、for in<br>3、Object.assign()  </p>
+<p>深拷贝的方式：<br>1、采用递归去拷贝所有层级的属性</p>
+<pre><code class="javascript">function deepClone(obj) &#123;
+    let objClone = Array.isArray(obj) ? []: &#123;&#125;
+    if (typeof obj === &#39;object&#39;) &#123;
+        Object.keys(obj).forEach(key =&gt; &#123;
+            if (obj[key] &amp;&amp; typeof obj[key] === &#39;object&#39;) &#123;
+                objClone[key] = deepClone(obj[key])
+            &#125; else &#123;
+                objClone[key] = obj[key]
+            &#125;
+        &#125;)
+    &#125; else &#123;
+        objClone = obj
+    &#125;
+    return objClone;
+&#125;
+
+let a = &#123;
+    name: &#39;zs&#39;,
+    age: 18,
+    son: &#123;
+        name: &#39;ls&#39;,
+        age: 1
+    &#125;
+&#125;
+let b = deepClone(a) //深拷贝
+let c = Object.assign(&#123;&#125;, a); //浅拷贝
+let d = a; //浅拷贝
+let e = &#123;&#125;;
+for (let key in a) &#123; //浅拷贝
+    e[key] = a[key]
+&#125;
+a.son.name = &#39;zs&#39;;
+console.log(a); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;zs&#39;, age: 1 &#125; &#125;
+console.log(b); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;ls&#39;, age: 1 &#125; &#125;
+console.log(c); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;zs&#39;, age: 1 &#125; &#125;
+console.log(d); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;zs&#39;, age: 1 &#125; &#125;
+console.log(e); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;zs&#39;, age: 1 &#125; &#125;
+</code></pre>
+<p>2、才用JSON的方法</p>
+<pre><code class="javascript">let a = &#123;
+    name: &#39;zs&#39;,
+    age: 18,
+    son: &#123;
+        name: &#39;ls&#39;,
+        age: 1
+    &#125;
+&#125;
+let b = JSON.parse(JSON.stringify(a));
+a.son.name = &#39;ww&#39;;
+console.log(a); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;ww&#39;, age: 1 &#125; &#125;
+console.log(b); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;ls&#39;, age: 1 &#125; &#125;
+
+//缺点：无法复制方法属性
+
+let a1 = &#123;
+    name: &#39;zs&#39;,
+    age: 18,
+    son: &#123;
+        name: &#39;ls&#39;,
+        age: 1
+    &#125;,
+    say() &#123;
+        console.log(&#39;hello&#39;)
+    &#125;
+&#125;
+let b1 = JSON.parse(JSON.stringify(a1));
+a1.son.name = &#39;ww&#39;;
+console.log(a1); // &#123; name: &#39;zs&#39;,age: 18,son: &#123; name: &#39;ww&#39;, age: 1 &#125;,say: [Function: say] &#125;
+console.log(b1); // &#123; name: &#39;zs&#39;, age: 18, son: &#123; name: &#39;ls&#39;, age: 1 &#125; &#125;
+</code></pre>
+<p>3、利用jQuery的extend方法</p>
+<pre><code class="javascript">let arr = [1,2,3,4]
+let newArr = $.extend(true, [], arr) // true为深拷贝，false为浅拷贝
+</code></pre>
+<p>4、loadsh函数库实现</p>
+<pre><code class="javascript">let obj = &#123;
+    name: &#39;z1&#39;,
+    son: &#123;
+        name: &#39;zs&#39;
+    &#125;
+&#125;
+let result = _.cloneDeep(obj);
+</code></pre>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s4.ax1x.com/2022/01/13/7Qj0kq.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/01/13/es6/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">es6</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s4.ax1x.com/2022/01/13/7QjUmj.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/01/10/htmlAndCss/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">htmlAndCss知识</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://img.cmvideo.cn/publish/voms2/uic_service/picture/userImage/740/885/933/20210616153149jzkc.png" class="soft-size--round soft-style--box" alt="kuangzz">
+    
+    
+      <h2>kuangzz</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>11</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        1
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        14
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%B0%8F%E6%8A%80%E6%9C%AF/">
+            小技术 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/JS/" style="font-size: 10px;" class="tags-cloud-0">JS</a> <a href="/tags/commonJs/" style="font-size: 10px;" class="tags-cloud-0">commonJs</a> <a href="/tags/es6/" style="font-size: 10px;" class="tags-cloud-0">es6</a> <a href="/tags/html/" style="font-size: 10px;" class="tags-cloud-0">html</a> <a href="/tags/js/" style="font-size: 20px;" class="tags-cloud-10">js</a> <a href="/tags/promise/" style="font-size: 10px;" class="tags-cloud-0">promise</a> <a href="/tags/ts/" style="font-size: 10px;" class="tags-cloud-0">ts</a> <a href="/tags/vue/" style="font-size: 15px;" class="tags-cloud-5">vue</a> <a href="/tags/webpack/" style="font-size: 10px;" class="tags-cloud-0">webpack</a> <a href="/tags/%E5%8D%95%E9%A1%B5%E9%9D%A2/" style="font-size: 10px;" class="tags-cloud-0">单页面</a> <a href="/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" style="font-size: 10px;" class="tags-cloud-0">双向绑定</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">网络</a> <a href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;" class="tags-cloud-0">观察者模式</a> <a href="/tags/%E8%B7%AF%E7%94%B1/" style="font-size: 10px;" class="tags-cloud-0">路由</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2022 <a href="/" target="_blank">kuangzz</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>

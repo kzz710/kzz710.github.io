@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+    <meta name="description" content="每天进步一点点">
+  
+
+  
+
+  
+    <meta name="author" content="kuangzz">
+  
+
+  
+
+  
+
+  <title>TypeScript | myBlog</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(https://s1.ax1x.com/2022/03/09/bR4iGj.png)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          myBlog
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">TypeScript</h1>
+          <h2 class="title-sub-wrap">
+            <strong>kuangzz</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2022-03-09T07:11:31.000Z" itemprop="datePublished">2022-03-09</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/js/">🏷️ js</a></li>
+  
+    <li><a href="/tags/ts/">🏷️ ts</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h2 id="TypeScript详解"><a href="#TypeScript详解" class="headerlink" title="TypeScript详解"></a>TypeScript详解</h2><h3 id="hello-typescript"><a href="#hello-typescript" class="headerlink" title="hello typescript"></a>hello typescript</h3><p>typescript是js的超集，包括js,类型限制，es6自动转换</p>
+<pre><code class="typescript">const hello = (name: string) =&gt; &#123;
+    console.log(`hello, $&#123;name&#125;`)
+&#125;
+
+hello(&#39;typescript&#39;)
+</code></pre>
+<h3 id="typescript配置文件"><a href="#typescript配置文件" class="headerlink" title="typescript配置文件"></a>typescript配置文件</h3><p>配置ts项目配置文件，使用命令行 yarn tsc –init 生成，内部包含文件入口目录、生成目录、sourceMap等配置，配置完成直接运行命令行 yarn tsc 则能编译整个项目</p>
+<pre><code class="json">&#123;
+  &quot;compilerOptions&quot;: &#123;
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Projects */
+    // &quot;incremental&quot;: true,                              /* Enable incremental compilation */
+    // &quot;composite&quot;: true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
+    // &quot;tsBuildInfoFile&quot;: &quot;./&quot;,                          /* Specify the folder for .tsbuildinfo incremental compilation files. */
+    // &quot;disableSourceOfProjectReferenceRedirect&quot;: true,  /* Disable preferring source files instead of declaration files when referencing composite projects */
+    // &quot;disableSolutionSearching&quot;: true,                 /* Opt a project out of multi-project reference checking when editing. */
+    // &quot;disableReferencedProjectLoad&quot;: true,             /* Reduce the number of projects loaded automatically by TypeScript. */
+
+    /* Language and Environment */
+    &quot;target&quot;: &quot;es5&quot;,                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+     &quot;lib&quot;: [&quot;es2015&quot;,&quot;DOM&quot;],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
+    // &quot;jsx&quot;: &quot;preserve&quot;,                                /* Specify what JSX code is generated. */
+    // &quot;experimentalDecorators&quot;: true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
+    // &quot;emitDecoratorMetadata&quot;: true,                    /* Emit design-type metadata for decorated declarations in source files. */
+    // &quot;jsxFactory&quot;: &quot;&quot;,                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. &#39;React.createElement&#39; or &#39;h&#39; */
+    // &quot;jsxFragmentFactory&quot;: &quot;&quot;,                         /* Specify the JSX Fragment reference used for fragments when targeting React JSX emit e.g. &#39;React.Fragment&#39; or &#39;Fragment&#39;. */
+    // &quot;jsxImportSource&quot;: &quot;&quot;,                            /* Specify module specifier used to import the JSX factory functions when using `jsx: react-jsx*`.` */
+    // &quot;reactNamespace&quot;: &quot;&quot;,                             /* Specify the object invoked for `createElement`. This only applies when targeting `react` JSX emit. */
+    // &quot;noLib&quot;: true,                                    /* Disable including any library files, including the default lib.d.ts. */
+    // &quot;useDefineForClassFields&quot;: true,                  /* Emit ECMAScript-standard-compliant class fields. */
+
+    /* Modules */
+    &quot;module&quot;: &quot;commonjs&quot;,                                /* Specify what module code is generated. */
+     &quot;rootDir&quot;: &quot;src&quot;,                                  /* Specify the root folder within your source files. */
+    // &quot;moduleResolution&quot;: &quot;node&quot;,                       /* Specify how TypeScript looks up a file from a given module specifier. */
+    // &quot;baseUrl&quot;: &quot;./&quot;,                                  /* Specify the base directory to resolve non-relative module names. */
+    // &quot;paths&quot;: &#123;&#125;,                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+    // &quot;rootDirs&quot;: [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
+    // &quot;typeRoots&quot;: [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
+    // &quot;types&quot;: [],                                      /* Specify type package names to be included without being referenced in a source file. */
+    // &quot;allowUmdGlobalAccess&quot;: true,                     /* Allow accessing UMD globals from modules. */
+    // &quot;resolveJsonModule&quot;: true,                        /* Enable importing .json files */
+    // &quot;noResolve&quot;: true,                                /* Disallow `import`s, `require`s or `&lt;reference&gt;`s from expanding the number of files TypeScript should add to a project. */
+
+    /* JavaScript Support */
+    // &quot;allowJs&quot;: true,                                  /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */
+    // &quot;checkJs&quot;: true,                                  /* Enable error reporting in type-checked JavaScript files. */
+    // &quot;maxNodeModuleJsDepth&quot;: 1,                        /* Specify the maximum folder depth used for checking JavaScript files from `node_modules`. Only applicable with `allowJs`. */
+
+    /* Emit */
+    // &quot;declaration&quot;: true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+    // &quot;declarationMap&quot;: true,                           /* Create sourcemaps for d.ts files. */
+    // &quot;emitDeclarationOnly&quot;: true,                      /* Only output d.ts files and not JavaScript files. */
+    // &quot;sourceMap&quot;: true,                                /* Create source map files for emitted JavaScript files. */
+    // &quot;outFile&quot;: &quot;./&quot;,                                  /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
+     &quot;outDir&quot;: &quot;dist&quot;,                                   /* Specify an output folder for all emitted files. */
+    // &quot;removeComments&quot;: true,                           /* Disable emitting comments. */
+    // &quot;noEmit&quot;: true,                                   /* Disable emitting files from a compilation. */
+    // &quot;importHelpers&quot;: true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
+    // &quot;importsNotUsedAsValues&quot;: &quot;remove&quot;,               /* Specify emit/checking behavior for imports that are only used for types */
+    // &quot;downlevelIteration&quot;: true,                       /* Emit more compliant, but verbose and less performant JavaScript for iteration. */
+    // &quot;sourceRoot&quot;: &quot;&quot;,                                 /* Specify the root path for debuggers to find the reference source code. */
+    // &quot;mapRoot&quot;: &quot;&quot;,                                    /* Specify the location where debugger should locate map files instead of generated locations. */
+    // &quot;inlineSourceMap&quot;: true,                          /* Include sourcemap files inside the emitted JavaScript. */
+    // &quot;inlineSources&quot;: true,                            /* Include source code in the sourcemaps inside the emitted JavaScript. */
+    // &quot;emitBOM&quot;: true,                                  /* Emit a UTF-8 Byte Order Mark (BOM) in the beginning of output files. */
+    // &quot;newLine&quot;: &quot;crlf&quot;,                                /* Set the newline character for emitting files. */
+    // &quot;stripInternal&quot;: true,                            /* Disable emitting declarations that have `@internal` in their JSDoc comments. */
+    // &quot;noEmitHelpers&quot;: true,                            /* Disable generating custom helper functions like `__extends` in compiled output. */
+    // &quot;noEmitOnError&quot;: true,                            /* Disable emitting files if any type checking errors are reported. */
+    // &quot;preserveConstEnums&quot;: true,                       /* Disable erasing `const enum` declarations in generated code. */
+    // &quot;declarationDir&quot;: &quot;./&quot;,                           /* Specify the output directory for generated declaration files. */
+    // &quot;preserveValueImports&quot;: true,                     /* Preserve unused imported values in the JavaScript output that would otherwise be removed. */
+
+    /* Interop Constraints */
+    // &quot;isolatedModules&quot;: true,                          /* Ensure that each file can be safely transpiled without relying on other imports. */
+    // &quot;allowSyntheticDefaultImports&quot;: true,             /* Allow &#39;import x from y&#39; when a module doesn&#39;t have a default export. */
+    &quot;esModuleInterop&quot;: true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    // &quot;preserveSymlinks&quot;: true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+    &quot;forceConsistentCasingInFileNames&quot;: true,            /* Ensure that casing is correct in imports. */
+
+    /* Type Checking */
+    &quot;strict&quot;: true,                                      /* Enable all strict type-checking options. */
+    // &quot;noImplicitAny&quot;: true,                            /* Enable error reporting for expressions and declarations with an implied `any` type.. */
+    // &quot;strictNullChecks&quot;: true,                         /* When type checking, take into account `null` and `undefined`. */
+    // &quot;strictFunctionTypes&quot;: true,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
+    // &quot;strictBindCallApply&quot;: true,                      /* Check that the arguments for `bind`, `call`, and `apply` methods match the original function. */
+    // &quot;strictPropertyInitialization&quot;: true,             /* Check for class properties that are declared but not set in the constructor. */
+    // &quot;noImplicitThis&quot;: true,                           /* Enable error reporting when `this` is given the type `any`. */
+    // &quot;useUnknownInCatchVariables&quot;: true,               /* Type catch clause variables as &#39;unknown&#39; instead of &#39;any&#39;. */
+    // &quot;alwaysStrict&quot;: true,                             /* Ensure &#39;use strict&#39; is always emitted. */
+    // &quot;noUnusedLocals&quot;: true,                           /* Enable error reporting when a local variables aren&#39;t read. */
+    // &quot;noUnusedParameters&quot;: true,                       /* Raise an error when a function parameter isn&#39;t read */
+    // &quot;exactOptionalPropertyTypes&quot;: true,               /* Interpret optional property types as written, rather than adding &#39;undefined&#39;. */
+    // &quot;noImplicitReturns&quot;: true,                        /* Enable error reporting for codepaths that do not explicitly return in a function. */
+    // &quot;noFallthroughCasesInSwitch&quot;: true,               /* Enable error reporting for fallthrough cases in switch statements. */
+    // &quot;noUncheckedIndexedAccess&quot;: true,                 /* Include &#39;undefined&#39; in index signature results */
+    // &quot;noImplicitOverride&quot;: true,                       /* Ensure overriding members in derived classes are marked with an override modifier. */
+    // &quot;noPropertyAccessFromIndexSignature&quot;: true,       /* Enforces using indexed accessors for keys declared using an indexed type */
+    // &quot;allowUnusedLabels&quot;: true,                        /* Disable error reporting for unused labels. */
+    // &quot;allowUnreachableCode&quot;: true,                     /* Disable error reporting for unreachable code. */
+
+    /* Completeness */
+    // &quot;skipDefaultLibCheck&quot;: true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+    &quot;skipLibCheck&quot;: true                                 /* Skip type checking all .d.ts files. */
+  &#125;
+&#125;
+</code></pre>
+<h3 id="typescript的原始基本类型"><a href="#typescript的原始基本类型" class="headerlink" title="typescript的原始基本类型"></a>typescript的原始基本类型</h3><pre><code class="typescript">const a: string = &#39;ts&#39;;
+
+const b: number = 123;
+
+const c: boolean = true;
+
+const d: any = &#39;123&#39;;
+
+const e: void = undefined; // 非严格模式下能为undefined
+
+const f: undefined = undefined;
+
+const g: null = null;
+
+const h: symbol = Symbol(); // Symbol、Promise为es6的特性，故需使用需将配置文件target设为es2015,或者在配置文件lib新增es2015
+
+export &#123;&#125;; // 形成模块作用域，避免示例命名冲突
+</code></pre>
+<h3 id="typescript的object类型"><a href="#typescript的object类型" class="headerlink" title="typescript的object类型"></a>typescript的object类型</h3><pre><code class="typescript">export &#123;&#125;;
+
+const a: object = function ()&#123;&#125;//&#123;&#125;//[]  // object类型包括对象、数组、方法
+
+const b: &#123;&#125; = &#123;name: &#39;zs&#39;, age: 18&#125;
+
+const c: &#123;name: string, son: string&#125; = &#123;name: &#39;zs&#39;, age: 18&#125; // 如果声明对象成员，则赋值应该严格按照内部成员赋值
+</code></pre>
+<h3 id="typescript的数组类型"><a href="#typescript的数组类型" class="headerlink" title="typescript的数组类型"></a>typescript的数组类型</h3><pre><code class="typescript">export &#123;&#125;;
+
+const a: Array&lt;number&gt; = [1,2,3];
+
+const b: number[] = [1,2,3];
+
+function add(...args: number[]) &#123; //声明数据类型，无需再做类型判断
+    return args.reduce((prev, cur) =&gt; &#123;
+        return prev + cur;
+    &#125;, 0)
+&#125;
+
+add(1,2,3);
+</code></pre>
+<h3 id="typescript元组"><a href="#typescript元组" class="headerlink" title="typescript元组"></a>typescript元组</h3><pre><code class="typescript">// 元组是数组的扩展，他表示已知元素类型和数量的数组
+export &#123;&#125;;
+const a: [string, number] = [&#39;ts&#39;, 210] // 元素的个数和类型都固定
+
+a[0] = 123 // 报错
+</code></pre>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><pre><code class="typescript">export &#123;&#125;
+export &#123;&#125;;
+
+// 以前用对象表示枚举
+
+// const postStatus = &#123;
+//     pending: 0,
+//     success: 1,
+//     fail: 2
+// &#125;
+
+//ts新增枚举
+
+enum postStatus &#123; // 枚举不赋值表示从0开始往后累加
+    pending,
+    success,
+    fail
+&#125;
+
+enum postStatus1 &#123; // 第一个元素赋值，后面元素累加
+    p=6,
+    s,
+    f
+&#125;
+
+enum postStatus2 &#123; // 如果第一个元素是字符串，则后面元素必须赋值
+    p=&#39;p&#39;,
+    s=&#39;s&#39;,
+    f=&#39;f&#39;
+&#125;
+
+const enum ps &#123; // 常量枚举，不能使用索引的方式访问名称，常量枚举不会被解析
+    p,
+    s,
+    f
+&#125;
+
+// ps[0] // 错误
+
+ps.p;
+
+postStatus1[0] // 6
+
+const post = &#123;
+    title: &#39;ts&#39;,
+    content: &#39;很不错&#39;,
+    status: postStatus.pending
+&#125;
+</code></pre>
+<h3 id="typescript的函数类型"><a href="#typescript的函数类型" class="headerlink" title="typescript的函数类型"></a>typescript的函数类型</h3><pre><code class="typescript">export &#123;&#125;;
+
+function f1(a: number, b:number): number &#123;
+    return a+b;
+&#125;
+
+f1(1, 456)
+
+function f2(a: string, b: number): string &#123;
+    return &#39;123&#39;;
+&#125;
+
+f2(&#39;ts&#39;, 502);
+
+function f3(a: string, b?:number): void &#123; // ?表示可变参数，可有可无，只能放在最后一个参数使用
+    console.log(a, b);
+&#125;
+
+f3(&#39;ts&#39;)
+
+function f4(...rest: any[]): string &#123; // any类型不会进行类型检查，会有安全问题
+    console.log(rest)
+    return &#39;123&#39;
+&#125;
+
+f4(1,2, &#39;5&#39;)
+
+const f5 = function (a: number, b: number): number &#123;
+    return  a+ b;
+&#125;
+
+f5(1,2);
+
+function str(value: any) &#123; // any能接受任意类型的参数，但是不会进行类型检查，不安全
+    return JSON.stringify(value)
+&#125;
+
+str(1);
+str(&#39;ts&#39;);
+str(undefined);
+</code></pre>
+<h3 id="隐式类型装换和类型断言"><a href="#隐式类型装换和类型断言" class="headerlink" title="隐式类型装换和类型断言"></a>隐式类型装换和类型断言</h3><pre><code class="typescript">export &#123;&#125;;
+
+let a = 100;
+// a = &#39;123&#39; // 报错，因为在a赋值时，已经进行了隐式类型转换，将a转换为number类型
+
+let b; // 隐式类型转换，无法明确类型故为 any类型
+b=1;
+b=&#39;ts&#39;;
+b=undefined;
+
+let arr = [100,200,300]
+
+let num = arr.find(item =&gt; item &gt; 1);
+
+// let res = num * num; // ts无法明确num是啥类型 故报错
+
+let num1 = num as number; // 类型断言
+
+let num2 = &lt;number&gt;num; // 推荐使用上一种类型断言方式
+
+let res = num1 * num1;
+
+let res2 = num2 * num2;
+</code></pre>
+<h3 id="typescript接口"><a href="#typescript接口" class="headerlink" title="typescript接口"></a>typescript接口</h3><p>接口就是为了约束对象的接口，一个对象实现接口，就必须拥有接口中所有的成员</p>
+<pre><code class="typescript">export &#123;&#125;
+
+interface Post &#123; // 接口对对象结构进行约束，对象实现接口，就需实现所有成员
+    title: string,
+    content: string,
+    subtitle?: string // 添加？表示字段可有可无
+    readonly summery: string // 只读成员
+&#125;
+
+function getPost(post: Post) &#123;
+    console.log(post.title, post.content, &#39;zzzzzz&#39;);
+&#125;
+
+getPost(&#123;
+    title: &#39;ts&#39;,
+    content: &#39;ts 666&#39;,
+    summery: &#39;good&#39;
+&#125;)
+
+let post: Post = &#123;
+    title: &#39;ts&#39;,
+    content: &#39;ts 666&#39;,
+    summery: &#39;good&#39;
+&#125;
+
+
+interface Cache &#123;
+    [key: string]: string, // 动态接口成员，对象可以实现多个属性成员
+&#125;
+
+const cache: Cache = &#123;&#125;;
+
+cache.foo = &#39;foo&#39;
+cache.doo = &#39;doo&#39;
+</code></pre>
+<h3 id="typescript类"><a href="#typescript类" class="headerlink" title="typescript类"></a>typescript类</h3><pre><code class="typescript">export &#123;&#125;;
+
+class Person &#123;
+    constructor(name: string, age: number) &#123;
+        this.name = name;
+        this.age = age;
+        this.gender = true;
+        this.xg = &#39;hqg&#39;
+    &#125;
+    public name: string; // public，表示能够被外部访问
+    private age: number; // private, 表示只能被内部访问，外部访问不到
+    protected gender: boolean; // protected，表示能在内部和子类访问，外部访问不到
+    readonly xg: string; // 只读属性
+    say(msg: string): void &#123;
+        console.log(msg)
+        console.log(this.age, this.gender)
+    &#125;
+&#125;
+
+
+const tom = new Person(&#39;tom&#39;, 18);
+tom.say(&#39;hello&#39;);
+
+class Student extends Person &#123;
+    private constructor(name: string, age: number) &#123; //私有构造函数，外部不能使用new生成实例，只能内部使用静态方法生成
+        super(name, age);
+        console.log(this.gender) // protected属性能在子类中访问
+    &#125;
+    static getInstance(name: string, age: number) &#123;
+        return new Student(name, age);
+    &#125;
+&#125;
+
+// const xm = new Student()
+const xm = Student.getInstance(&#39;xm&#39;, 18);
+</code></pre>
+<h3 id="typescript类的接口"><a href="#typescript类的接口" class="headerlink" title="typescript类的接口"></a>typescript类的接口</h3><pre><code class="typescript">export &#123;&#125;;
+
+// 不同的类，可能会具有相同的方法，此时可以将相同的方法作为一个接口
+
+interface Run &#123;
+    run(distance: string): void
+&#125;
+
+interface Eat &#123;
+    eat(food: string): void
+&#125;
+
+class Person implements Run, Eat&#123;
+    eat(food: string) &#123;
+        console.log(&#39;person eating&#39; + food)
+    &#125;
+    run(distance: string) &#123;
+        console.log(&#39;person run&#39; + distance)
+    &#125;
+&#125;
+
+class Animal implements Run, Eat&#123;
+    eat(food: string) &#123;
+        console.log(&#39;animal eating&#39; + food)
+    &#125;
+    run(distance: string) &#123;
+        console.log(&#39;animal run&#39; + distance)
+    &#125;
+&#125;
+</code></pre>
+<h3 id="typescript抽象类"><a href="#typescript抽象类" class="headerlink" title="typescript抽象类"></a>typescript抽象类</h3><pre><code class="typescript">export &#123;&#125;;
+
+abstract class Animal &#123; // 抽象类只能被继承，不能被实例化
+    eat(food: string): void &#123;
+        console.log(&#39;animal eat&#39; + food)
+    &#125;
+    abstract run(distance: string): void // 子类必须实现父类的抽象方法
+&#125;
+
+// let dog = new Animal() // 错误
+
+class Dog extends Animal &#123;
+    run(distance: string): void &#123;
+        console.log(&#39;四脚爬行&#39; + distance)
+    &#125;
+&#125;
+
+let dog = new Dog()
+
+dog.run(&#39;100米&#39;)
+
+dog.eat(&#39;肉&#39;)
+</code></pre>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><pre><code class="typescript">export &#123;&#125;;
+
+// 泛型就是当类型不明确时，使用泛型替代，后面在调用时，传入具体的数据类型
+
+function createNumberArray(length: number, value: number): number[] &#123; // 创建数字数组
+    return Array&lt;number&gt;(length).fill(value);
+&#125;
+
+createNumberArray(3,100);
+
+function createStringArray(length: number, value: string): string[] &#123; // 创建字符串数组
+    return Array&lt;string&gt;(length).fill(value);
+&#125;
+
+createStringArray(3,&#39;100&#39;);
+
+// 上诉方法冗余，正确的做法是使用泛型
+
+function createArray&lt;T&gt;(length: number, value: T): T[] &#123;
+    return Array&lt;T&gt;(length).fill(value);
+&#125;
+
+createArray&lt;number&gt;(5, 100);
+
+createArray&lt;string&gt;(5,&#39;100&#39;);
+</code></pre>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s4.ax1x.com/2022/02/17/H5dRjx.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/02/17/webpack/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">前端工程化</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://img.cmvideo.cn/publish/voms2/uic_service/picture/userImage/740/885/933/20210616153149jzkc.png" class="soft-size--round soft-style--box" alt="kuangzz">
+    
+    
+      <h2>kuangzz</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>11</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        1
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        14
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%B0%8F%E6%8A%80%E6%9C%AF/">
+            小技术 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/JS/" style="font-size: 10px;" class="tags-cloud-0">JS</a> <a href="/tags/commonJs/" style="font-size: 10px;" class="tags-cloud-0">commonJs</a> <a href="/tags/es6/" style="font-size: 10px;" class="tags-cloud-0">es6</a> <a href="/tags/html/" style="font-size: 10px;" class="tags-cloud-0">html</a> <a href="/tags/js/" style="font-size: 20px;" class="tags-cloud-10">js</a> <a href="/tags/promise/" style="font-size: 10px;" class="tags-cloud-0">promise</a> <a href="/tags/ts/" style="font-size: 10px;" class="tags-cloud-0">ts</a> <a href="/tags/vue/" style="font-size: 15px;" class="tags-cloud-5">vue</a> <a href="/tags/webpack/" style="font-size: 10px;" class="tags-cloud-0">webpack</a> <a href="/tags/%E5%8D%95%E9%A1%B5%E9%9D%A2/" style="font-size: 10px;" class="tags-cloud-0">单页面</a> <a href="/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" style="font-size: 10px;" class="tags-cloud-0">双向绑定</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">网络</a> <a href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;" class="tags-cloud-0">观察者模式</a> <a href="/tags/%E8%B7%AF%E7%94%B1/" style="font-size: 10px;" class="tags-cloud-0">路由</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2022 <a href="/" target="_blank">kuangzz</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
